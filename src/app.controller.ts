@@ -20,13 +20,14 @@ export class AppController {
   @Post('auth/login')
   async login(@Request() req) {
     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>> start");
-    console.log("Response >>>>");
     return this.authService.login(req.user);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   getProfile(@Request() req) {
+    console.log("User profile after token validation >>>>",req);
     return req.user;
   }
 }
+ 
